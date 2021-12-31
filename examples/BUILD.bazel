@@ -1,0 +1,15 @@
+load("//tar:defs.bzl", "file_size", "pkg_tar")
+
+pkg_tar(
+    name = "archive",
+    srcs = [
+        ":1.txt",
+        ":2.txt",
+    ],
+    package_dir = "/my/layout",
+)
+
+file_size(
+    name = "size",
+    file = ":archive",
+)

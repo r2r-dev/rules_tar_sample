@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "size",
+    srcs = [
+        "size.go",
+    ],
+    importpath = "github.com/r2r-dev/rules_tar/pkg/size",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_bazelbuild_rules_go//go/tools/bazel",
+        "@com_github_spf13_afero//:afero",
+    ],
+)
+
+alias(
+    name = "go_default_library",
+    actual = ":size",
+    visibility = ["//visibility:public"],
+)

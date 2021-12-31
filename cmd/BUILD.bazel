@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "tarchiver_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/r2r-dev/tarchiver/cmd",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//cmd/commands",
+        "//pkg/cli",
+    ],
+)
+
+go_binary(
+    name = "tarchiver",
+    embed = [":tarchiver_lib"],
+    visibility = ["//visibility:public"],
+)

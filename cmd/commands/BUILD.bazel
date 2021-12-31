@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "commands",
+    srcs = [
+        "archive.go",
+        "root.go",
+        "size.go",
+    ],
+    importpath = "github.com/r2r-dev/rules_tar/cmd/commands",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//pkg/archive",
+        "//pkg/size",
+        "@com_github_spf13_cobra//:cobra",
+    ],
+)
+
+alias(
+    name = "go_default_library",
+    actual = ":commands",
+    visibility = ["//visibility:public"],
+)
